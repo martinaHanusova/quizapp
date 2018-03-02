@@ -1,0 +1,44 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Quiz app</string>
+    <string name="this_flag_belongs_to_which_country">Kterému státu patří tato vlajka?</string>
+    <string name="reset">Reset</string>
+    <string name="next">Další</string>
+    <string name="results">Výsledky</string>
+    <string name="Czech_Republic">Česká Republika</string>
+    <string name="Panama">Panama</string>
+    <string name="Barbados">Barbados</string>
+    <string name="Iceland">Island</string>
+    <string name="Jordan">Jordánsko</string>
+    <string name="Kenya">Keňa</string>
+    <string name="Poland">Polsko</string>
+    <string name="Latvia">Lotyšsko</string>
+    <string name="Togo">Togo</string>
+    <string name="Jamaica">Jamajka</string>
+    <string name="Syria">Sýrie</string>
+    <string name="Chile">Chile</string>
+    <string name="Italy">Itálie</string>
+    <string name="Mauritius">Mauricius</string>
+    <string name="Nepal">Nepál</string>
+    <string name="Corsica">Korsika</string>
+    <string name="Bhutan">Bhútán</string>
+    <string name="Pakistan">Pákistán</string>
+    <string name="Chad">Čad</string>
+    <string name="Kazakhstan">Kazachstán</string>
+    <string name="Uruguay">Uruguay</string>
+    <string name="Albania">Albánie</string>
+    <string name="Iran">Írán</string>
+    <string name="Haiti">Haiti</string>
+    <string name="Norway">Norsko</string>
+    <string name="Belgium">Belgie</string>
+    <string name="Finland">Finsko</string>
+    <string name="Denmark">Dánsko</string>
+    <string name="Colombia">Kolumbie</string>
+    <string name="Greece">Řecko</string>
+    <string name="Peru">Peru</string>
+    <string name="Uganda">Uganda</string>
+    <string name="Tonga">Tonga</string>
+    <string name="Tajikistan">Tádžikistán</string>
+    <string name="India">Indie</string>
+    <string name="right_answers">Správné odpovědi: <xliff:g example="5" id="right_answers">%1$d</xliff:g></string>
+    <string name="wrong_answers">Nesprávné odpovědi: <xliff:g example="5" id="wrong_answers">%1$d</xliff:g></string>
+</resources>

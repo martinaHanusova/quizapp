@@ -1,0 +1,45 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Quiz app</string>
+    <string name="fun_with_flags" translatable="false">Fun with Flags</string>
+    <string name="this_flag_belongs_to_which_country">This flag belongs to which country?</string>
+    <string name="reset">Reset</string>
+    <string name="next">Next</string>
+    <string name="results">Results</string>
+    <string name="wrong_answers">Wrong answers: <xliff:g id="wrong_answers" example="5">%1$d</xliff:g></string>
+    <string name="Czech_Republic">Czech Republic</string>
+    <string name="Panama">Panama</string>
+    <string name="Barbados">Barbados</string>
+    <string name="Iceland">Iceland</string>
+    <string name="Jordan">Jordan</string>
+    <string name="Kenya">Kenya</string>
+    <string name="Poland">Poland</string>
+    <string name="Latvia">Latvia</string>
+    <string name="Togo">Togo</string>
+    <string name="Jamaica">Jamaica</string>
+    <string name="Syria">Syria</string>
+    <string name="Chile">Chile</string>
+    <string name="Italy">Italy</string>
+    <string name="Mauritius">Mauritius</string>
+    <string name="Nepal">Nepal</string>
+    <string name="Corsica">Corsica</string>
+    <string name="Bhutan">Bhutan</string>
+    <string name="Pakistan">Pakistan</string>
+    <string name="Chad">Chad</string>
+    <string name="Kazakhstan">Kazakhstan</string>
+    <string name="Uruguay">Uruguay</string>
+    <string name="Albania">Albania</string>
+    <string name="Iran">Iran</string>
+    <string name="Haiti">Haiti</string>
+    <string name="Norway">Norway</string>
+    <string name="Belgium">Belgium</string>
+    <string name="Finland">Finland</string>
+    <string name="Denmark">Denmark</string>
+    <string name="Colombia">Colombia</string>
+    <string name="Greece">Greece</string>
+    <string name="Peru">Peru</string>
+    <string name="Uganda">Uganda</string>
+    <string name="Tonga">Tonga</string>
+    <string name="Tajikistan">Tajikistan</string>
+    <string name="India">India</string>
+    <string name="right_answers">Right answers: <xliff:g example="5" id="right_answers">%1$d</xliff:g></string>
+</resources>

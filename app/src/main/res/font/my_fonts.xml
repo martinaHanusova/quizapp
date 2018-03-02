@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <font android:fontStyle="normal" android:fontWeight="400" android:font="@font/khand"
+        app:fontStyle="normal" app:fontWeight="400" app:font="@font/khand"/>
+<font android:fontStyle="normal" android:fontWeight="400" android:font="@font/attack_of_the_cucumbers"
+    app:fontStyle="normal" app:fontWeight="400" app:font="@font/attack_of_the_cucumbers"/>
+<font android:fontStyle="normal" android:fontWeight="400" android:font="@font/mostly_mono"
+    app:fontStyle="normal" app:fontWeight="400" app:font="@font/mostly_mono"/>
+<font android:fontStyle="normal" android:fontWeight="400" android:font="@font/sensible_armadillo"
+    app:fontStyle="normal" app:fontWeight="400" app:font="@font/sensible_armadillo"/>
+</font-family>

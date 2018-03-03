@@ -41,5 +41,13 @@
     <string name="Tonga">Tonga</string>
     <string name="Tajikistan">Tajikistan</string>
     <string name="India">India</string>
+    <string name="Romania">Romania</string>
+    <string name="Iraq">Iraq</string>
+    <string name="Yemen">Yemen</string>
+    <string name="Japan">Japan</string>
+    <string name="Russia">Russia</string>
+    <string name="Slovenia">Slovenia</string>
+    <string name="Laos">Laos</string>
+    <string name="which_state_has_similar_flag">Which states has similar flag?</string>
     <string name="right_answers">Right answers: <xliff:g example="5" id="right_answers">%1$d</xliff:g></string>
 </resources>

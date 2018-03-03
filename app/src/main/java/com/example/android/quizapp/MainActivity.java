@@ -51,21 +51,29 @@ public class MainActivity extends AppCompatActivity {
                 new String[]{getString(R.string.Norway), getString(R.string.Belgium), getString(R.string.Finland), getString(R.string.Denmark)},
                 new String[]{getString(R.string.Colombia), getString(R.string.Greece), getString(R.string.Peru), getString(R.string.Uganda)},
                 new String[]{getString(R.string.Jordan), getString(R.string.Tonga), getString(R.string.Tajikistan), getString(R.string.India)},
+                new String[]{getString(R.string.Poland), getString(R.string.Finland), getString(R.string.Chad), getString(R.string.Romania)},
+                new String[]{getString(R.string.Italy)},
+                new String[]{getString(R.string.Iraq), getString(R.string.Kazakhstan), getString(R.string.Yemen), getString(R.string.Syria)},
+                new String[]{getString(R.string.Japan)},
+                new String[]{getString(R.string.Finland), getString(R.string.Slovenia), getString(R.string.India), getString(R.string.Russia)},
+                new String[]{getString(R.string.Laos)},
         };
 
         // Creating images for questions
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < answers.length; i++) {
             ImageView flag = new ImageView(this);
             flag.setImageResource(getResources().getIdentifier("img" + i, "drawable", getPackageName()));
 
         // Creating questions for quiz
-            Question otazka = new Question(flag, answers[i], indexRightAnswers[i], this);
+            Question otazka = new Question(flag, answers[i], indexRightAnswers[i], questionType[i], this);
             questions.add(otazka);
-            Collections.shuffle(questions);
-        }
 
-        // Seting first question
+        }
+        Collections.shuffle(questions);
+
+        // Setting first question
         linearLayout.addView(questions.get(questionNumber).getLayout());
+
 
         sendAnswer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
                 nextQuestion();
             }
         });
-
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,12 +88,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+    // reset score and set new questions
     public void reset() {
         for (int i = 0; i <= questionNumber; i++) {
             questions.get(i).clearCheck();
         }
-        linearLayout.removeView(questions.get(questionNumber).getLayout());
+        linearLayout.removeAllViews();
         if (questionNumber >= 9) {
             instruction.setText(getString(R.string.this_flag_belongs_to_which_country));
             contentLayout.removeView(rightAnswersText);
@@ -102,15 +109,22 @@ public class MainActivity extends AppCompatActivity {
         linearLayout.addView(questions.get(questionNumber).getLayout());
     }
 
+
+    // set next question
     public void nextQuestion() {
         if (questions.get(questionNumber).evaluateQuestion()) {
             rightAnswers += 1;
         }
         if (questionNumber < 9) {
-            linearLayout.removeView(questions.get(questionNumber).getLayout());
+            linearLayout.removeAllViews();
             questionNumber += 1;
             linearLayout.addView(questions.get(questionNumber).getLayout());
             progressB.incrementProgressBy(10);
+            if (questions.get(questionNumber).getTypeOfAnswer() == Question.TypeOfAnswer.CHECK_BOX) {
+                instruction.setText(getString(R.string.which_state_has_similar_flag));
+            } else {
+                instruction.setText(getString(R.string.this_flag_belongs_to_which_country));
+            }
         } else {
             contentLayout.removeView(progressB);
             contentLayout.removeView(linearLayout);
@@ -122,7 +136,45 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // index of right answer
-    private int[] indexRightAnswers = new int[]{1, 3, 1, 0, 2, 0, 1, 2, 3, 3};
+    private int[][] indexRightAnswers = new int[][]{
+            new int[]{0},
+            new int[]{0},
+            new int[]{0},
+            new int[]{0},
+            new int[]{0},
+            new int[]{0},
+            new int[]{0},
+            new int[]{0},
+            new int[]{0},
+            new int[]{0},
+            new int[]{2, 3},
+            new int[]{0},
+            new int[]{0, 2, 3},
+            new int[]{0},
+            new int[]{1, 3},
+            new int[]{0},
+    };
+
+
+    // type of answer of question
+    private Question.TypeOfAnswer[] questionType = new Question.TypeOfAnswer[] {
+            Question.TypeOfAnswer.RADIO_BUTTONS,
+            Question.TypeOfAnswer.RADIO_BUTTONS,
+            Question.TypeOfAnswer.RADIO_BUTTONS,
+            Question.TypeOfAnswer.RADIO_BUTTONS,
+            Question.TypeOfAnswer.RADIO_BUTTONS,
+            Question.TypeOfAnswer.RADIO_BUTTONS,
+            Question.TypeOfAnswer.RADIO_BUTTONS,
+            Question.TypeOfAnswer.RADIO_BUTTONS,
+            Question.TypeOfAnswer.RADIO_BUTTONS,
+            Question.TypeOfAnswer.RADIO_BUTTONS,
+            Question.TypeOfAnswer.CHECK_BOX,
+            Question.TypeOfAnswer.EDIT_TEXT,
+            Question.TypeOfAnswer.CHECK_BOX,
+            Question.TypeOfAnswer.EDIT_TEXT,
+            Question.TypeOfAnswer.CHECK_BOX,
+            Question.TypeOfAnswer.EDIT_TEXT,
+    };
 }
 
 

@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         Collections.shuffle(questions);
 
         // Setting first question
+        setInstruction();
         linearLayout.addView(questions.get(questionNumber).getLayout());
 
 
@@ -88,6 +89,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void setInstruction() {
+        if (questions.get(questionNumber).getTypeOfAnswer() == Question.TypeOfAnswer.CHECK_BOX) {
+            instruction.setText(getString(R.string.which_state_has_similar_flag));
+        } else {
+            instruction.setText(getString(R.string.this_flag_belongs_to_which_country));
+        }
+    }
+
     // reset score and set new questions
     public void reset() {
         for (int i = 0; i <= questionNumber; i++) {
@@ -106,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
         rightAnswers = 0;
         progressB.setProgress(10);
         Collections.shuffle(questions);
+        setInstruction();
         linearLayout.addView(questions.get(questionNumber).getLayout());
     }
 
@@ -120,11 +131,7 @@ public class MainActivity extends AppCompatActivity {
             questionNumber += 1;
             linearLayout.addView(questions.get(questionNumber).getLayout());
             progressB.incrementProgressBy(10);
-            if (questions.get(questionNumber).getTypeOfAnswer() == Question.TypeOfAnswer.CHECK_BOX) {
-                instruction.setText(getString(R.string.which_state_has_similar_flag));
-            } else {
-                instruction.setText(getString(R.string.this_flag_belongs_to_which_country));
-            }
+            setInstruction();
         } else {
             contentLayout.removeView(progressB);
             contentLayout.removeView(linearLayout);
@@ -137,16 +144,16 @@ public class MainActivity extends AppCompatActivity {
 
     // index of right answer
     private int[][] indexRightAnswers = new int[][]{
+            new int[]{1},
+            new int[]{3},
+            new int[]{1},
             new int[]{0},
+            new int[]{2},
             new int[]{0},
-            new int[]{0},
-            new int[]{0},
-            new int[]{0},
-            new int[]{0},
-            new int[]{0},
-            new int[]{0},
-            new int[]{0},
-            new int[]{0},
+            new int[]{1},
+            new int[]{2},
+            new int[]{3},
+            new int[]{3},
             new int[]{2, 3},
             new int[]{0},
             new int[]{0, 2, 3},

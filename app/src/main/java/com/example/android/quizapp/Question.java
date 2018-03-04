@@ -18,6 +18,7 @@ import java.util.List;
 
 public class Question {
     public enum TypeOfAnswer {RADIO_BUTTONS, CHECK_BOX, EDIT_TEXT}
+
     private TypeOfAnswer typeOfAnswer;
     private ImageView image;
     private String[] answers;
@@ -105,14 +106,18 @@ public class Question {
             return checkedRadioButton == rightAnswers[0];
         } else if (typeOfAnswer == TypeOfAnswer.CHECK_BOX) {
             int numberOfRightAnswers = 0;
+            int numberOfCheckedAnswers = 0;
             for (int i = 0; i < checkboxGroup.size(); i++) {
-                    for (int j = 0; j < rightAnswers.length; j++) {
+                if (checkboxGroup.get(i).isChecked()) {
+                    numberOfCheckedAnswers += 1;
+                }
+                for (int j = 0; j < rightAnswers.length; j++) {
                     if (checkboxGroup.get(i).isChecked() && checkboxGroup.get(i).getId() == rightAnswers[j]) {
                         numberOfRightAnswers += 1;
                     }
                 }
             }
-            return numberOfRightAnswers == rightAnswers.length;
+            return numberOfRightAnswers == rightAnswers.length && numberOfRightAnswers == numberOfCheckedAnswers;
         } else {
             String answer = editAnswer.getText().toString();
             return answer.equalsIgnoreCase(answers[0]);
@@ -136,6 +141,7 @@ public class Question {
 
     /**
      * Method for getting type of answer
+     *
      * @return type of answer
      */
 

@@ -15,7 +15,7 @@
         android:fontFamily="@font/khand"
         android:gravity="center"
         android:text="@string/fun_with_flags"
-        android:textColor="@color/colorWhite"
+        android:textColor="@color/appNameTextColor"
         android:textSize="@dimen/app_name_font_size"
         android:textStyle="bold" />
 
@@ -37,7 +37,7 @@
             android:progressTint="@color/colorAccent" />
 
         <TextView
-            android:id="@+id/instruction"
+            android:id="@+id/textview_instruction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/progressB"
@@ -52,24 +52,24 @@
             android:id="@+id/question_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/instruction"
+            android:layout_below="@id/textview_instruction"
             android:orientation="vertical"></LinearLayout>
         <LinearLayout
             android:id="@+id/result_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/instruction"
+            android:layout_below="@id/textview_instruction"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/right_answer"
+                android:id="@+id/textview_right_answer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimaryText"
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/wrong_answer"
+                android:id="@+id/textview_wrong_answer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimaryText"
@@ -77,23 +77,23 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/send_answer"
+            android:id="@+id/btn_send_answer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:background="@drawable/button_rounded_corners"
             android:text="@string/next"
-            android:textColor="@color/colorWhite" />
+            android:textColor="@color/appNameTextColor" />
 
         <Button
-            android:id="@+id/reset"
+            android:id="@+id/btn_reset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:background="@drawable/button_rounded_corners"
             android:text="@string/reset"
-            android:textColor="@color/colorWhite" />
+            android:textColor="@color/appNameTextColor" />
     </RelativeLayout>
 </LinearLayout>

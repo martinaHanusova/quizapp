@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private Button reset;
     private TextView rightAnswersText;
     private TextView wrongAnswersText;
+    private Toast toast;
+    private String message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +37,13 @@ public class MainActivity extends AppCompatActivity {
         linearLayout = findViewById(R.id.question_layout);
         contentLayout = findViewById(R.id.content_layout);
         progressB = findViewById(R.id.progressB);
-        rightAnswersText = findViewById(R.id.right_answer);
-        wrongAnswersText = findViewById(R.id.wrong_answer);
-        instruction = findViewById(R.id.instruction);
-        reset = findViewById(R.id.reset);
-        sendAnswer = findViewById(R.id.send_answer);
+        rightAnswersText = findViewById(R.id.textview_right_answer);
+        wrongAnswersText = findViewById(R.id.textview_wrong_answer);
+        instruction = findViewById(R.id.textview_instruction);
+        reset = findViewById(R.id.btn_reset);
+        sendAnswer = findViewById(R.id.btn_send_answer);
 
-        String[][] answers =  new String[][]{
+        String[][] answers = new String[][]{
                 new String[]{getString(R.string.Czech_Republic), getString(R.string.Panama), getString(R.string.Barbados), getString(R.string.Iceland)},
                 new String[]{getString(R.string.Jordan), getString(R.string.Kenya), getString(R.string.Poland), getString(R.string.Czech_Republic)},
                 new String[]{getString(R.string.Latvia), getString(R.string.Togo), getString(R.string.Jamaica), getString(R.string.Syria)},
@@ -64,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             ImageView flag = new ImageView(this);
             flag.setImageResource(getResources().getIdentifier("img" + i, "drawable", getPackageName()));
 
-        // Creating questions for quiz
+            // Creating questions for quiz
             Question otazka = new Question(flag, answers[i], indexRightAnswers[i], questionType[i], this);
             questions.add(otazka);
 
@@ -90,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void setInstruction() {
+    private void setInstruction() {
         if (questions.get(questionNumber).getTypeOfAnswer() == Question.TypeOfAnswer.CHECK_BOX) {
             instruction.setText(getString(R.string.which_state_has_similar_flag));
         } else {
@@ -99,19 +102,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // reset score and set new questions
-    public void reset() {
+    private void reset() {
         for (int i = 0; i <= questionNumber; i++) {
             questions.get(i).clearCheck();
         }
         linearLayout.removeAllViews();
-        if (questionNumber >= 9) {
-            instruction.setText(getString(R.string.this_flag_belongs_to_which_country));
-            contentLayout.removeView(rightAnswersText);
-            contentLayout.addView(linearLayout);
-            sendAnswer.setVisibility(View.VISIBLE);
-            rightAnswersText.setText(null);
-            wrongAnswersText.setText(null);
-        }
         questionNumber = 0;
         rightAnswers = 0;
         progressB.setProgress(10);
@@ -120,9 +115,8 @@ public class MainActivity extends AppCompatActivity {
         linearLayout.addView(questions.get(questionNumber).getLayout());
     }
 
-
     // set next question
-    public void nextQuestion() {
+    private void nextQuestion() {
         if (questions.get(questionNumber).evaluateQuestion()) {
             rightAnswers += 1;
         }
@@ -133,12 +127,20 @@ public class MainActivity extends AppCompatActivity {
             progressB.incrementProgressBy(10);
             setInstruction();
         } else {
-            contentLayout.removeView(progressB);
-            contentLayout.removeView(linearLayout);
-            sendAnswer.setVisibility(View.GONE);
-            instruction.setText(getString(R.string.results));
-            rightAnswersText.setText(getString(R.string.right_answers, rightAnswers));
-            wrongAnswersText.setText(getString(R.string.wrong_answers, 10 - rightAnswers));
+            String comment = "";
+            if (rightAnswers < 4) {
+                comment += getString(R.string.so_so);
+            } else if (rightAnswers < 7) {
+                comment += getString(R.string.not_too_bad);
+            } else if (rightAnswers < 10) {
+                comment += getString(R.string.great_score);
+            } else {
+                comment += getString(R.string.ten_out_of_ten);
+            }
+            message = comment + "\n" + getString(R.string.right_answers, rightAnswers) + "\n" + getString(R.string.wrong_answers, 10 - rightAnswers);
+            toast = Toast.makeText(this, message, Toast.LENGTH_LONG);
+            toast.show();
+            reset();
         }
     }
 
@@ -164,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     // type of answer of question
-    private Question.TypeOfAnswer[] questionType = new Question.TypeOfAnswer[] {
+    private Question.TypeOfAnswer[] questionType = new Question.TypeOfAnswer[]{
             Question.TypeOfAnswer.RADIO_BUTTONS,
             Question.TypeOfAnswer.RADIO_BUTTONS,
             Question.TypeOfAnswer.RADIO_BUTTONS,

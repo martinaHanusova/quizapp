@@ -49,4 +49,8 @@
     <string name="Slovenia">Slovinsko</string>
     <string name="Laos">Laos</string>
     <string name="which_state_has_similar_flag">Které státy mají podobou vlajku?</string>
+    <string name="so_so">Nic moc.</string>
+    <string name="not_too_bad">Ujde to.</string>
+    <string name="great_score">Skvělé skóre!</string>
+    <string name="ten_out_of_ten">Deset z deseti!</string>
 </resources>

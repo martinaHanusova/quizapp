@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    tools:context="com.example.android.quizapp.MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/app_name_margin"
+        android:layout_marginTop="@dimen/app_name_margin"
+        android:fontFamily="@font/khand"
+        android:gravity="center"
+        android:text="@string/fun_with_flags"
+        android:textColor="@color/appNameTextColor"
+        android:textSize="@dimen/app_name_font_size"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="@dimen/content_margin"
+        android:layout_marginLeft="@dimen/content_margin"
+        android:layout_marginBottom="@dimen/content_margin"
+        android:background="@drawable/layout_rounded_corners"
+        android:padding="@dimen/content_margin">
+        <ProgressBar
+            android:id="@+id/progressB"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:progress="10"
+            android:progressBackgroundTint="@color/colorDividerColor"
+            android:progressTint="@color/colorAccent" />
+
+        <TextView
+            android:id="@+id/textview_instruction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/progressB"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/question_margin"
+            android:layout_marginTop="@dimen/question_margin"
+            android:text="@string/this_flag_belongs_to_which_country"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/question_font_size"
+            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/textview_instruction"
+            android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/question_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:layout_below="@id/textview_instruction"
+            android:orientation="vertical">
+        </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/btn_reset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/button_margin"
+                    android:background="@drawable/button_rounded_corners"
+                    android:text="@string/reset"
+                    android:textColor="@color/appNameTextColor"/>
+                <Button
+                    android:id="@+id/btn_send_answer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:background="@drawable/button_rounded_corners"
+                    android:text="@string/next"
+                    android:textColor="@color/appNameTextColor"/>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

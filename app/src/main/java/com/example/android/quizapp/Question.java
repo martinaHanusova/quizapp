@@ -166,7 +166,7 @@ public class Question implements Parcelable {
             }
             return numberOfRightAnswers == rightAnswers.length && numberOfRightAnswers == numberOfCheckedAnswers;
         } else {
-            String answer = editAnswer.getText().toString();
+            String answer = editAnswer.getText().toString().trim();
             return answer.equalsIgnoreCase(answers[0]);
         }
     }
@@ -181,8 +181,8 @@ public class Question implements Parcelable {
             }
         } else if (typeOfAnswer == TypeOfAnswer.CHECK_BOX) {
             if (checkboxGroup != null) {
-                for (int i = 0; i < checkboxGroup.size(); i++) {
-                    checkboxGroup.get(i).setChecked(false);
+                for (CheckBox checkBox: checkboxGroup) {
+                    checkBox.setChecked(false);
                 }
             }
         } else {
